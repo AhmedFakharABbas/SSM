@@ -1,0 +1,16 @@
+@mixin sssm-sidebar-theme($theme) {
+
+    $background: map-get($theme, background);
+
+    sssm-sidebar {
+        background: map-get($background, background);
+    }
+
+    .sssm-sidebar-overlay {
+        background-color: rgba(0, 0, 0, 0.6);
+
+        &.sssm-sidebar-overlay-invisible {
+            background-color: transparent;
+        }
+    }
+}

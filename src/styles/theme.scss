@@ -1,0 +1,32 @@
+// @import "src/@sssm/components/countdown/countdown.theme";
+// @import "src/@sssm/components/material-color-picker/material-color-picker.theme";
+// @import "src/@sssm/components/search-bar/search-bar.theme";
+// @import "src/@sssm/components/shortcuts/shortcuts.theme";
+@import "src/app/layout/admin/sidebar/sidebar.theme";
+// @import "src/@sssm/components/theme-options/theme-options.theme";
+// @import "src/@sssm/components/widget/widget.theme";
+
+
+
+@mixin sssm-core-theme($theme) {
+
+    // Theming for sssm core styles
+    @include colors-theme($theme);
+    @include cards-theme($theme);
+    @include material-theme($theme);
+    @include page-layouts-theme($theme);
+    @include typography-theme($theme);
+
+    // Theming for sssm components
+    // @include sssm-countdown-theme($theme);
+    // @include sssm-search-bar-theme($theme);
+    // @include sssm-shortcuts-theme($theme);
+    @include sssm-sidebar-theme($theme);
+    // @include sssm-theme-options-theme($theme);
+    // @include sssm-material-color-picker-theme($theme);
+    // @include sssm-widget-theme($theme);
+
+    // Theming for 3rd party components
+    @include ngx-datatable-theme($theme);
+}
+

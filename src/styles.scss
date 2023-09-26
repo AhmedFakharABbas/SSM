@@ -1,0 +1,21 @@
+/* You can add global styles to this file, and also import other style files */
+@import "styles/core.scss";
+
+// Import app.theme.scss
+@import "app/app.theme";
+
+
+.background-red{
+    background-color: rgb(153, 50, 50) !important;
+  }
+  .background-green{
+    background-color: rgb(29, 102, 29) !important;
+  }
+  .message-color{
+    background-color: #ECECEE !important;
+    color:#039be5  !important;
+    font-weight: bold;
+  }
+  .font-color-error{
+    color: red !important;
+}

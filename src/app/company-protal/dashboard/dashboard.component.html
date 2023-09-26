@@ -1,0 +1,78 @@
+<div id="vehicle" class="page-layout simple left-sidebar inner-sidebar inner-scroll">
+
+    <!-- HEADER -->
+    <div class="header accent p-16 p-sm-24" fxLayout="column" fxLayoutAlign="start" fxLayout.gt-xs="row"
+      fxLayoutAlign.gt-xs="space-between center">
+      <!-- APP TITLE -->
+      <div fxLayout="row" fxLayoutAlign="start center">
+  
+  
+        <div class="logo" fxLayout="row" fxLayoutAlign="start center">
+          <mat-icon class="secondary-text s-16">home
+          </mat-icon>
+          <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
+          <span class="secondary-text s-16">Vehicle Management</span>
+          <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
+          <span class="secondary-text s-16">Vehicles</span>
+        </div>
+      </div>
+      <!-- / APP TITLE -->
+    </div>
+    <!-- / HEADER -->
+  
+    <!-- CONTENT -->
+    <div class="content">
+      <!-- CENTER -->
+      <div class="center p-24 pb-56 pr-sm-92" sssmPerfectScrollbar>
+        <mat-form-field class="mat-form-field" style="display: block !important;">
+          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+        </mat-form-field>
+        <!-- CONTENT -->
+        <div class="content">
+  
+         
+            <mat-table [dataSource]="dataSource" matSort>
+
+                <!-- ID Column -->
+                <ng-container matColumnDef="id">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
+                  <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
+                </ng-container>
+            
+                <!-- Progress Column -->
+                <ng-container matColumnDef="progress">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header> Progress </mat-header-cell>
+                  <mat-cell *matCellDef="let row"> {{row.progress}}% </mat-cell>
+                </ng-container>
+            
+                <!-- Name Column -->
+                <ng-container matColumnDef="name">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+                  <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+                </ng-container>
+            
+                <!-- Color Column -->
+                <ng-container matColumnDef="color">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header> Color </mat-header-cell>
+                  <mat-cell *matCellDef="let row" [style.color]="row.color"> {{row.color}} </mat-cell>
+                </ng-container>
+            
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;">
+                </mat-row>
+              </mat-table>
+            
+              <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+        </div>
+      </div>
+  
+    </div>
+ 
+  </div>
+  
+  <!-- ADD USER BUTTON -->
+  <a mat-fab class="accent" id="vehicle-add-button" routerLink="/admin/vehicle" aria-label="add death"
+    [@animate]="{value:'*', params:{delay:'300ms',scale:'.2'}}">
+    <mat-icon>airport_shuttle</mat-icon>
+  </a>
+  <!-- / ADD USER BUTTON -->

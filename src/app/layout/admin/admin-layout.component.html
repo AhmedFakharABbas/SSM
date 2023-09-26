@@ -1,0 +1,109 @@
+<!-- SIDE PANEL -->
+
+<ng-container *ngIf="!sssmConfig.layout.sidepanel.hidden && sssmConfig.layout.sidepanel.position === 'left'">
+
+    <!-- PANEL CONTENT -->
+
+</ng-container>
+<!-- / SIDE PANEL -->
+
+<div id="main">
+
+    <!-- TOOLBAR: Above -->
+    <ng-container *ngIf="sssmConfig.layout.toolbar.position === 'above'  && isNotLoginPage===true">
+        <ng-container *ngTemplateOutlet="toolbar"></ng-container>
+    </ng-container>
+    <!-- / TOOLBAR: Above -->
+
+    <div id="container-1" class="container">
+
+        <!-- NAVBAR: Left -->
+        <ng-container *ngIf="sssmConfig.layout.navbar.position === 'left' && isNotLoginPage===true">
+            <ng-container *ngTemplateOutlet="leftNavbar"></ng-container>
+        </ng-container>
+        <!-- / NAVBAR: Left -->
+
+        <div id="container-2" class="container">
+
+            <!-- TOOLBAR: Below fixed -->
+            <ng-container *ngIf="sssmConfig.layout.toolbar.position === 'below-fixed'  && isNotLoginPage===true">
+                <ng-container *ngTemplateOutlet="toolbar"></ng-container>
+            </ng-container>
+            <!-- / TOOLBAR: Below fixed -->
+
+            <div id="container-3" class="container" sssmPerfectScrollbar
+                 [sssmPerfectScrollbarOptions]="{suppressScrollX: true, updateOnRouteChange : true}">
+
+                <!-- TOOLBAR: Below static -->
+                <ng-container *ngIf="sssmConfig.layout.toolbar.position === 'below-static'  && isNotLoginPage===true">
+                    <ng-container *ngTemplateOutlet="toolbar"></ng-container>
+                </ng-container>
+                <!-- / TOOLBAR: Below static -->
+
+                <!-- CONTENT -->
+                <content>
+                    <router-outlet></router-outlet>
+                </content>
+                <!-- / CONTENT -->
+
+                <!-- FOOTER: Below static -->
+                <ng-container *ngIf="sssmConfig.layout.footer.position === 'below-static'  && isNotLoginPage===true">
+                    <ng-container *ngTemplateOutlet="footer"></ng-container>
+                </ng-container>
+                <!-- / FOOTER: Below static -->
+
+            </div>
+
+            <!-- FOOTER: Below fixed -->
+            <ng-container *ngIf="sssmConfig.layout.footer.position === 'below-fixed'  && isNotLoginPage===true">
+                <ng-container *ngTemplateOutlet="footer"></ng-container>
+            </ng-container>
+            <!-- / FOOTER: Below fixed -->
+
+        </div>
+
+        <!-- NAVBAR: Right -->
+        <!-- <ng-container *ngIf="sssmConfig.layout.navbar.position === 'right'  && isNotLoginPage===true">
+            <ng-container *ngTemplateOutlet="rightNavbar"></ng-container>
+        </ng-container> -->
+        <!-- / NAVBAR: Right -->
+
+    </div>
+
+    <!-- FOOTER: Above -->
+    <ng-container *ngIf="sssmConfig.layout.footer.position === 'above'  && isNotLoginPage===true">
+        <ng-container *ngTemplateOutlet="footer"></ng-container>
+    </ng-container>
+    <!-- FOOTER: Above -->
+
+</div>
+
+
+<!-- TOOLBAR -->
+<ng-template #toolbar>
+    <toolbar *ngIf="!sssmConfig.layout.toolbar.hidden"
+             [ngClass]="sssmConfig.layout.toolbar.customBackgroundColor === true ? sssmConfig.layout.toolbar.position + ' ' + sssmConfig.layout.toolbar.background : sssmConfig.layout.toolbar.position">
+    </toolbar>
+</ng-template>
+<!-- / TOOLBAR -->
+
+<!-- FOOTER -->
+<ng-template #footer>
+    <footer *ngIf="!sssmConfig.layout.footer.hidden"
+            [ngClass]="sssmConfig.layout.footer.customBackgroundColor === true ? sssmConfig.layout.footer.position + ' ' + sssmConfig.layout.footer.background : sssmConfig.layout.footer.position">
+    </footer>
+</ng-template>
+<!-- / FOOTER -->
+
+<!-- LEFT NAVBAR -->
+<ng-template #leftNavbar>
+    <sssm-sidebar name="navbar" class="navbar-sssm-sidebar"
+                  [folded]="sssmConfig.layout.navbar.folded"
+                  lockedOpen="gt-md"
+                  *ngIf="!sssmConfig.layout.navbar.hidden">
+        <navbar [variant]="sssmConfig.layout.navbar.variant" class="left-navbar"></navbar>
+    </sssm-sidebar>
+</ng-template>
+<!-- / LEFT NAVBAR -->
+
+
